@@ -1,1 +1,14 @@
-ECHO est  ativado.
+.pokedex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: row;
+}
+
+.pokemon>p:first-child {
+    margin-right: 20px;
+}
