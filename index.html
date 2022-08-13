@@ -11,13 +11,25 @@
 
 <body>
     <main>
-        <div class="pokedex">
-            <input type="button" value="anterior" class="back">
-            <div class="pokemon">
-                <p class="show">0</p>
-                <p class="poke">default</p>
+        <div class="pokedex-content">
+            <div class="img">
+                <img src="img/pokedex.png" alt="" srcset="" class="pokedex-img">
+                <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/gible.gif" class="pokemon">
+                <div class="poke-info">
+                    <span class="numero">numero</span>
+                    <span class="nome">nome</span>
+                </div>
+                <div class="search">
+                    <form action="">
+                        <input type="search" name="" id="poke">
+                    </form>
+                    <div class="botao">
+                        <input type="button" value="previous">
+                        <input type="button" value="next">
+
+                    </div>
+                </div>
             </div>
-            <input type="button" value="proximo" class="next">
         </div>
     </main>
 </body>
