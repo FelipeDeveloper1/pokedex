@@ -51,7 +51,7 @@ main {
     margin: auto;
 }
 
-.search>form>input {
+.search>input {
     height: 50px;
     width: 210px;
     border-radius: 6px;
