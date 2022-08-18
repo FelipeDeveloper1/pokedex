@@ -28,6 +28,7 @@ search.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
 
         showpoke(`${search.value.toLowerCase()}`)
+        search.value = ''
     }
 })
 
@@ -38,13 +39,19 @@ const option = {
 }
 
 showpoke = async(value) => {
-
-    const fetchpokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}`, option)
-    const data = await fetchpokemon.json()
-    pokemon.setAttribute('src', `https://img.pokemondb.net/sprites/black-white/anim/normal/${data.name}.gif`)
-    numero.innerHTML = `${data.id}`
-    nome.innerHTML = `${data.name}`
-    if (data) {
+    try {
+        const fetchpokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}`, option)
+        const data = await fetchpokemon.json()
+        pokemon.setAttribute('src', `https://img.pokemondb.net/sprites/black-white/anim/normal/${data.name}.gif`)
+        numero.innerHTML = `${data.id} - `
+        nome.innerHTML = `${data.name}`
         num_atual = data.id
+        pokemon.style.display = 'block'
+        console.log(data)
+
+    } catch {
+        numero.innerHTML = ''
+        nome.innerHTML = 'Pokemon Not Found'
+        pokemon.style.display = 'none'
     }
 }
