@@ -4,8 +4,32 @@ const nome = document.querySelector('.nome')
 const pokemon = document.querySelector('.pokemon')
 const search = document.querySelector('#poke')
 
-let num_atual = 0
+const next = document.querySelector('.next')
+const previous = document.querySelector('.previous')
 
+let num_atual = 1
+
+
+
+// criando as functions
+next.addEventListener('click', () => {
+    num_atual += 1
+    showpoke(num_atual)
+
+})
+previous.addEventListener('click', () => {
+    if (num_atual > 1) {
+        num_atual -= 1
+        showpoke(num_atual)
+    }
+
+})
+search.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+
+        showpoke(`${search.value.toLowerCase()}`)
+    }
+})
 
 const option = {
     method: 'GET',
@@ -13,32 +37,14 @@ const option = {
     cache: 'default'
 }
 
-// criando as functions 
-// search.addEventListener('keypress', (e) => {
-//     if (e.key === "Enter") {
-//         pokemon.setAttribute('src', `https://img.pokemondb.net/sprites/black-white/anim/normal/${info.results.name = search.value}.gif`)
-//     }
-// })
-buscar = (n) => {
-    n = Number(n)
-    if (num_atual >= 0) {
-        num_atual += n
-    } else {
-        num_atual = 0
+showpoke = async(value) => {
+
+    const fetchpokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}`, option)
+    const data = await fetchpokemon.json()
+    pokemon.setAttribute('src', `https://img.pokemondb.net/sprites/black-white/anim/normal/${data.name}.gif`)
+    numero.innerHTML = `${data.id}`
+    nome.innerHTML = `${data.name}`
+    if (data) {
+        num_atual = data.id
     }
-
-    show = (info) => {
-        pokemon.setAttribute('src', `https://img.pokemondb.net/sprites/black-white/anim/normal/${info.results[num_atual].name}.gif`)
-        nome.innerHTML = `${info.results[num_atual].name}`
-        numero.innerHTML = num_atual + 1 + '-'
-        console.log(info.results)
-    }
-
-
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0', option)
-        .then(file => {
-            file.json()
-                .then(file => show(file))
-        })
-        .catch(() => { console.log('falhou') })
 }
