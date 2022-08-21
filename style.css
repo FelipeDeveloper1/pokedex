@@ -73,3 +73,14 @@ main {
     border-radius: 3px;
     box-shadow: -5px 2px 1px black;
 }
+
+.botao>input:hover{
+    background-color: rgb(34, 31, 31);
+}
+
+.botao>input:active{
+    background-color: rgb(53, 49, 49);
+    margin-top: 32px;
+    border-radius: 3px;
+    box-shadow: -1px 1px 1px black;
+}
