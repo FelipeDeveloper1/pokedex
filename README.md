@@ -4,4 +4,4 @@ Um projeto que utiliza duas API , uma que coleta os dados de todos os pokemons e
 Desenvolvendo meu conhecimento com fetch API, aprendi bastante com o Await e async functions 
 <br> 
 
-link: https://fleen66.github.io/pokedex/
+link: https://felipedeveloper1.github.io/pokedex/
